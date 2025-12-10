@@ -274,9 +274,7 @@ impl LanguageModelProvider for OllamaLanguageModelProvider {
                     ollama::Model {
                         name: setting_model.name.clone(),
                         display_name: setting_model.display_name.clone(),
-                        max_tokens: settings
-                            .context_window
-                            .unwrap_or(setting_model.max_tokens),
+                        max_tokens: settings.context_window.unwrap_or(setting_model.max_tokens),
                         keep_alive: setting_model.keep_alive.clone(),
                         supports_tools: setting_model.supports_tools,
                         supports_vision: setting_model.supports_images,
@@ -744,7 +742,12 @@ impl ConfigurationView {
     }
 
     fn save_context_window(&mut self, cx: &mut Context<Self>) {
-        let context_window_str = self.context_window_editor.read(cx).text(cx).trim().to_string();
+        let context_window_str = self
+            .context_window_editor
+            .read(cx)
+            .text(cx)
+            .trim()
+            .to_string();
         let current_context_window = OllamaLanguageModelProvider::settings(cx).context_window;
 
         if let Ok(context_window) = context_window_str.parse::<u64>() {
@@ -864,12 +867,10 @@ impl ConfigurationView {
                     h_flex()
                         .gap_2()
                         .child(Icon::new(IconName::Check).color(Color::Success))
-                        .child(
-                            v_flex().gap_1().child(Label::new(format!(
-                                "Context Window: {}",
-                                settings.context_window.unwrap()
-                            ))),
-                        ),
+                        .child(v_flex().gap_1().child(Label::new(format!(
+                            "Context Window: {}",
+                            settings.context_window.unwrap()
+                        )))),
                 )
                 .child(
                     Button::new("reset-context-window", "Reset")
@@ -878,13 +879,19 @@ impl ConfigurationView {
                         .icon_size(IconSize::Small)
                         .icon_position(IconPosition::Start)
                         .layer(ElevationIndex::ModalSurface)
-                        .on_click(cx.listener(|this, _, window, cx| {
-                            this.reset_context_window(window, cx)
-                        })),
+                        .on_click(
+                            cx.listener(|this, _, window, cx| {
+                                this.reset_context_window(window, cx)
+                            }),
+                        ),
                 )
         } else {
             v_flex()
-                .on_action(cx.listener(|this, _, cx| this.save_context_window(cx)))
+                .on_action(
+                    cx.listener(|this, _: &menu::Confirm, _window, cx| {
+                        this.save_context_window(cx)
+                    }),
+                )
                 .child(self.context_window_editor.clone())
                 .child(
                     Label::new("Default: Model specific")
