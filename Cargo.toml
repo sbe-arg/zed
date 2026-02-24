@@ -457,7 +457,7 @@ aws-config = { version = "1.6.1", features = ["behavior-version-latest"] }
 aws-credential-types = { version = "1.2.2", features = [
     "hardcoded-credentials",
 ] }
-aws-sdk-bedrockruntime = { version = "1.80.0", features = [
+aws-sdk-bedrockruntime = { version = "1.111.0", features = [
     "behavior-version-latest",
 ] }
 aws-smithy-runtime-api = { version = "1.7.4", features = ["http-1x", "client"] }
@@ -470,7 +470,7 @@ blade-graphics = { version = "0.7.0" }
 blade-macros = { version = "0.3.0" }
 blade-util = { version = "0.3.0" }
 brotli = "8.0.2"
-bytes = "1.0"
+bytes = "1.11"
 cargo_metadata = "0.19"
 cargo_toml = "0.21"
 cfg-if = "1.0.3"
@@ -503,7 +503,7 @@ fork = "0.4.0"
 futures = "0.3"
 futures-lite = "1.13"
 gh-workflow = { git = "https://github.com/zed-industries/gh-workflow", rev = "09acfdf2bd5c1d6254abefd609c808ff73547b2c" }
-git2 = { version = "0.20.1", default-features = false }
+git2 = { version = "0.20.4", default-features = false }
 globset = "0.4"
 handlebars = "4.3"
 heck = "0.5"
@@ -523,7 +523,7 @@ inventory = "0.3.19"
 itertools = "0.14.0"
 json_dotpath = "1.1"
 jsonschema = "0.37.0"
-jsonwebtoken = "9.3"
+jsonwebtoken = "10.3"
 jupyter-protocol = "0.10.0"
 jupyter-websocket-client = "0.15.0"
 libc = "0.2"
@@ -605,7 +605,7 @@ reqwest = { git = "https://github.com/zed-industries/reqwest.git", rev = "c15662
     "socks",
     "stream",
 ], package = "zed-reqwest", version = "0.12.15-zed" }
-rsa = "0.9.6"
+rsa = "0.9.10"
 runtimelib = { version = "0.30.0", default-features = false, features = [
     "async-dispatcher-runtime", "aws-lc-rs"
 ] }
@@ -694,7 +694,7 @@ uuid = { version = "1.1.2", features = ["v4", "v5", "v7", "serde"] }
 walkdir = "2.5"
 wasm-encoder = "0.221"
 wasmparser = "0.221"
-wasmtime = { version = "29", default-features = false, features = [
+wasmtime = { version = "36", default-features = false, features = [
     "async",
     "demangle",
     "runtime",
@@ -703,7 +703,7 @@ wasmtime = { version = "29", default-features = false, features = [
     "incremental-cache",
     "parallel-compilation",
 ] }
-wasmtime-wasi = "29"
+wasmtime-wasi = "33"
 wax = "0.6"
 which = "6.0.0"
 windows-core = "0.61"
